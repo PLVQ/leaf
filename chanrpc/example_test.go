@@ -75,7 +75,7 @@ func TestChanrpc(t *testing.T) {
 			log.Log.WithField("ret", ret).Info()
 		}
 
-		c.AsyncCall("f0", func(err error) {
+		c.AsynCall("f0", func(err error) {
 			if err != nil {
 				log.Log.WithField("err", err).Error()
 			} else {
@@ -83,7 +83,7 @@ func TestChanrpc(t *testing.T) {
 			}
 		})
 
-		c.AsyncCall("f1", func(ret interface{}, err error) {
+		c.AsynCall("f1", func(ret interface{}, err error) {
 			if err != nil {
 				log.Log.WithField("err", err).Error()
 			} else {
@@ -91,7 +91,7 @@ func TestChanrpc(t *testing.T) {
 			}
 		})
 
-		c.AsyncCall("f2", 1, 2, func(ret []interface{}, err error) {
+		c.AsynCall("f2", 1, 2, func(ret []interface{}, err error) {
 			if err != nil {
 				log.Log.WithField("err", err).Error()
 			} else {
@@ -99,7 +99,7 @@ func TestChanrpc(t *testing.T) {
 			}
 		})
 
-		c.AsyncCall("add", 1, 2, func(ret interface{}, err error) {
+		c.AsynCall("add", 1, 2, func(ret interface{}, err error) {
 			if err != nil {
 				log.Log.WithField("err", err).Error()
 			} else {

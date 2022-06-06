@@ -319,7 +319,7 @@ func (c *Client) asyncCall(id interface{}, args []interface{}, cb interface{}, n
 	}
 }
 
-func (c *Client) AsyncCall(id interface{}, _args ...interface{}) {
+func (c *Client) AsynCall(id interface{}, _args ...interface{}) {
 	if len(_args) < 1 {
 		log.Log.Fatal("callback function not found")
 	}
