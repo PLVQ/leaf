@@ -17,21 +17,23 @@ type Server struct {
 	// func(args []interface{})
 	// func(args []interface{}) interface{}
 	// func(args []interface{}) []interface{}
-	functions map[interface{}]interface{}
-	ChanCall  chan *CallInfo	// 异步掉用一次性最多能传递多少函数
+	functions map[interface{}]interface{}		// 注册函数映射
+	ChanCall  chan *CallInfo					// 异步掉用一次性最多能传递多少函数
 }
 
+// 函数调用信息
 type CallInfo struct {
-	f       interface{}
-	args    []interface{}
-	chanRet chan *RetInfo
-	cb      interface{}
+	f       interface{}			// 函数
+	args    []interface{}		// 函数参数
+	chanRet chan *RetInfo		// 函数返回
+	cb      interface{}			// 回调函数
 }
 
+// 函数返回信息
 type RetInfo struct {
-	ret interface{}
-	err error
-	cb  interface{}
+	ret interface{}				// 返回值
+	err error					// 错误
+	cb  interface{}				// 回调函数
 }
 
 type Client struct {

@@ -9,12 +9,12 @@ import (
 )
 
 type TCPServer struct {
-	Addr            string
-	MaxConnNum      int
-	PendingWriteNum int
-	NewAgent        func(*TCPConn) Agent
+	Addr            string						// 监听网络地址
+	MaxConnNum      int							// 最大连接数
+	PendingWriteNum int							// 连接最大可写数
+	NewAgent        func(*TCPConn) Agent     	// 代理
 	ln              net.Listener
-	conns           ConnSet
+	conns           ConnSet						// 连接集合
 	mutexConns      sync.Mutex
 	wgLn            sync.WaitGroup
 	wgConns         sync.WaitGroup
@@ -23,7 +23,7 @@ type TCPServer struct {
 	LenMsgLen    int
 	MinMsgLen    uint32
 	MaxMsgLen    uint32
-	LitterEndian bool
+	LittleEndian bool
 	msgParser    *MsgParser
 }
 
@@ -57,7 +57,7 @@ func (server *TCPServer) init() {
 
 	msgParser := NewMsgParser()
 	msgParser.SetMsgLen(server.LenMsgLen, server.MinMsgLen, server.MaxMsgLen)
-	msgParser.SetByteOrder(server.LitterEndian)
+	msgParser.SetByteOrder(server.LittleEndian)
 	server.msgParser = msgParser
 }
 

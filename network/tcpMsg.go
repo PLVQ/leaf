@@ -92,7 +92,7 @@ func (msg *MsgParser) Read(conn *TCPConn, args ...[]byte) ([]byte, error) {
 
 	if msgLen > msg.maxMsgLen {
 		return nil, errors.New("Message too long")
-	} else if msgLen < msg.maxMsgLen {
+	} else if msgLen < msg.minMsgLen {
 		return nil, errors.New("message too short")
 	}
 

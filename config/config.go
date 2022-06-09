@@ -16,5 +16,5 @@ var (
 	// cluster
 	ListenAddr string
 	ConnAddrs []string
-	PendingWriterNum int
+	PendingWriteNum int
 )
